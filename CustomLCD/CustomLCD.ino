@@ -80,6 +80,33 @@ byte smile[8] =                             // tells which bit in the array to l
       
       };
 
+      byte breakHandsDown[8] =
+      {
+        0b01110,
+        0b01110,
+        0b00100,
+        0b11111,
+        0b10101,
+        0b00100,
+        0b11111,
+        0b10001
+        
+        
+        };
+      byte breakHandsUp[8] =
+      {
+        0b01110,
+        0b01110,
+        0b10101,
+        0b11111,
+        0b00100,
+        0b00100,
+        0b11111,
+        0b10001
+        
+        
+        };
+
 void setup() {
 
   lcd.begin(16, 2);                 //tell the lcd library that we are using a display that is 16 characters wide and 2 characters high
@@ -89,7 +116,8 @@ void setup() {
   lcd.createChar(2, determined);
   lcd.createChar(3, degreeMark);
   lcd.createChar(4, computerTime);
-
+  lcd.createChar(5, breakHandsDown);
+  lcd.createChar(6, breakHandsUp);
 }
 
 void loop() {
@@ -140,10 +168,39 @@ void loop() {
       hours++;
       }
 
+      if(minutes == 30 && minutes < 32)
+      {
+        lcd.clear();
+        lcd.setCursor(0,0);
+        lcd.print("Take a Break! ");
+        lcd.print(count);
+          if(count % 2 == 0)
+          {
+                    lcd.setCursor(0,1);
+                    lcd.write(5);
+            
+            }
+            else
+            {
+                 lcd.setCursor(0,1);
+                 lcd.write(6);
+              }
+
+        count++;
+        delay(1000);
+        if(count == 60)
+        {
+          minutes++;
+          }
+
+
+        
+        } 
 
 
 
-      else if(minutes >= 1 && hours == 0)
+
+      else if(minutes >= 1 && hours == 0 || minutes == 32)
       {
         
         
@@ -175,7 +232,7 @@ void loop() {
                 
         }
 
-        else if(hours >= 1 && minutes >= 0)
+        else if(hours >= 1 && minutes >= 0 || minutes == 32)
         {
                   lcd.clear();
           lcd.setCursor(0, 0);              
