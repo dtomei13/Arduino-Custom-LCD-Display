@@ -1,16 +1,4 @@
-/*
-  SparkFun Inventor’s Kit
-  Circuit 4A-HelloWorld
 
-  The LCD will display the words "Hello World" and show how many seconds have passed since
-  the RedBoard was last reset.
-
-  This sketch was written by SparkFun Electronics, with lots of help from the Arduino community.
-  This code is completely free for any use.
-
-  View circuit diagram and instructions at: https://learn.sparkfun.com/tutorials/sparkfun-inventors-kit-experiment-guide---v41
-  Download drawings and code at: https://github.com/sparkfun/SIK-Guide-Code
-*/
 
 #include <LiquidCrystal.h>          //the liquid crystal library contains commands for printing to the display
 
